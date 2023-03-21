@@ -10,27 +10,34 @@
 
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
-    <table class="job-listing">
-        <thead>
+    <table th:each="job : ${jobs}" class="job-listing">
+
+
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Employer</th>
-            <th>Location</th>
-            <th>Position Type</th>
-            <th>Core Competency</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="job : ${jobs}">
+            <td>ID</td>
             <td th:text="${job.id}"></td>
-            <td th:text="${job.name}"></td>
-            <td th:text="${job.employer.value}"></td>
-            <td th:text="${job.location.value}"></td>
-            <td th:text="${job.positionType.value}"></td>
-            <td th:text="${job.coreCompetency.value}"></td>
         </tr>
-        </tbody>
+        <tr>
+            <td>Name</td>
+            <td th:text="${job.name}"></td>
+        </tr>
+        <tr>
+            <td>Employer</td>
+            <td th:text="${job.employer}"></td>
+        </tr>
+        <tr>
+            <td>Location</td>
+            <td th:text="${job.location}"></td>
+        </tr>
+        <tr>
+            <td>Position Type</td>
+            <td th:text="${job.positionType}"></td>
+        </tr>
+        <tr>
+            <td>Core Competency</td>
+            <td th:text="${job.coreCompetency}"></td>
+        </tr>
+
     </table>
 
 </div>
