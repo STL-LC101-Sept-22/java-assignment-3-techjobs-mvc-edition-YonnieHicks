@@ -14,20 +14,20 @@ import java.util.ArrayList;
 import static org.launchcode.techjobs.mvc.controllers.ListController.columnChoices;
 
 @Controller
-@RequestMapping(value = "")
+@RequestMapping(value = "search")
 public class SearchController {
 
-    @GetMapping(value = "/search")
+    @GetMapping(value = "")
     public String search(Model model) {
         model.addAttribute("columns", columnChoices);
         return "search";
     }
 
-    @PostMapping(value = "/search/results")
+    @PostMapping(value = "results")
     public String displaySearchResults(Model model, @RequestParam String searchType, @RequestParam String searchTerm) {
         ArrayList<Job> jobs;
 
-        if (searchTerm.equalsIgnoreCase("all") || searchTerm.isEmpty()) {
+        if (searchTerm == null || searchTerm == "all") {
             jobs = JobData.findAll();
         } else {
             jobs = JobData.findByColumnAndValue(searchType, searchTerm);
